@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Register</title>
+    </head>
+    <body>
+        <h2>Select Role</h2>
+        <div>
+            <form th:action="@{/register-role-selection}" method="post">
+                <select name="role" required>
+                    <option value="">--Select Role--</option>
+                    <option value="student">Student</option>
+                    <option value="instructor">Instructor</option>
+                    <option value="admin">Admin</option>
+                </select>
+                <button type="submit">Continue</button>
+            </form>
+        </div>
+    </body>
+</html>
