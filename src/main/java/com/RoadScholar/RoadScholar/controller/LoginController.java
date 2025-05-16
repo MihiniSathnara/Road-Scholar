@@ -72,7 +72,7 @@ public class LoginController {
             }
             if(admin !=null){
                 session.setAttribute("loggedInUser",admin);
-                return "redirect:/admin/home";
+                return "redirect:/admin/dashboard";
             }
         }
         model.addAttribute("error", "Invalid credentials or role mismatch.");
@@ -82,11 +82,6 @@ public class LoginController {
     @GetMapping("/instructor/home")
     public String instructorHome(){
         return "instructor-home";
-    }
-
-    @GetMapping("/admin/home")
-    public String adminHome(){
-        return "admin-home";
     }
 
     @GetMapping("/logout")

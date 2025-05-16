@@ -7,5 +7,15 @@
   "studentId" : "S001",
   "enrolledCourseId" : "C01",
   "selectedInstructorId" : "I002",
-  "paymentVerified" : false
+  "paymentVerified" : true
+}, {
+  "firstName" : "Kavindu",
+  "lastName" : "Danushka",
+  "email" : "IT24102332@my.sliit.lk",
+  "password" : "asdfg",
+  "role" : "Student",
+  "studentId" : "S002",
+  "enrolledCourseId" : "C02",
+  "selectedInstructorId" : "I001",
+  "paymentVerified" : true
 } ]

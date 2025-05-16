@@ -35,7 +35,7 @@ public class StudentService {
     public void updateStudent(Student updatedStudent){
         List<Student> students=getAllStudents();
         for(int i=0;i< students.size();i++){
-            if(students.get(i).getEmail().equalsIgnoreCase(updatedStudent.getEmail())){
+            if(students.get(i).getStudentId().equals(updatedStudent.getStudentId())){
                 students.set(i,updatedStudent);
                 break;
             }
@@ -47,5 +47,15 @@ public class StudentService {
         List<Student> students=getAllStudents();
         int nextIdNumber= students.size()+1;
         return String.format("S%03d", nextIdNumber);
+    }
+
+    public Student getStudentById(String studentId){
+        List<Student> students=getAllStudents();
+        for(Student student: students){
+            if(student.getStudentId().equals(studentId)){
+                return student;
+            }
+        }
+        return null;
     }
 }

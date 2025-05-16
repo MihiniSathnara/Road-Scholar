@@ -115,4 +115,6 @@ public class StudentController {
     public String waitingForApproval(){
         return "waiting-for-verification";
     }
+
+
 }
