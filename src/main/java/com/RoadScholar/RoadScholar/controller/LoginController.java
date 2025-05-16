@@ -47,7 +47,8 @@ public class LoginController {
             }
             if(student!=null){
                 session.setAttribute("loggedInUser", student);
-                return "redirect:/student/home";
+                session.setAttribute("role",role.toLowerCase());
+                return "redirect:/student/enroll/course";
             }
         }else if(role.equalsIgnoreCase("instructor")){
             Instructor instructor=null;
@@ -78,11 +79,6 @@ public class LoginController {
         return "login";
     }
 
-    @GetMapping("/student/home")
-    public String StudentHome(){
-        return "student-home";
-    }
-
     @GetMapping("/instructor/home")
     public String instructorHome(){
         return "instructor-home";
@@ -91,5 +87,11 @@ public class LoginController {
     @GetMapping("/admin/home")
     public String adminHome(){
         return "admin-home";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/login";
     }
 }

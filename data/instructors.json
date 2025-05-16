@@ -1,0 +1,25 @@
+[ {
+  "firstName" : "Hello",
+  "lastName" : "World",
+  "email" : "v6sathnarajsn@gmail.com",
+  "password" : "asdfg",
+  "role" : "instructor",
+  "instructorId" : "I001",
+  "experienceYears" : 3
+}, {
+  "firstName" : "Sanduni",
+  "lastName" : "Aaloka",
+  "email" : "goalpha484@gmail.com",
+  "password" : "asdfg",
+  "role" : "instructor",
+  "instructorId" : "I002",
+  "experienceYears" : 9
+}, {
+  "firstName" : "dinul",
+  "lastName" : "kasun",
+  "email" : "deelakaalgawatta@gmail.com",
+  "password" : "asdfg",
+  "role" : "instructor",
+  "instructorId" : "I003",
+  "experienceYears" : 1
+} ]

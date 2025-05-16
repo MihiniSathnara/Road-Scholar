@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Select Instructor</title>
+</head>
+<body>
+<div>
+    <h2>Select an instructor</h2>
+    <div>
+        <th:block th:each="instructor: ${instructors}">
+            <div>
+                <div>
+                    <div>
+                        <h5 th:text="${instructor.firstName}"></h5>
+                        <h5 th:text="${instructor.lastName}"></h5>
+                        <p th:text="${instructor.experienceYears}"></p>
+                        <form th:action="@{/student/enroll/instructor}" method="post">
+                            <input type="hidden" name="instructorId" th:value="${instructor.instructorId}" />
+                            <button type="submit">Select</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </th:block>
+    </div>
+</div>
+</body>
+</html>

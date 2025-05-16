@@ -28,8 +28,28 @@ public class InstructorService {
     }
 
     public void registerInstructor(Instructor instructor){
+        instructor.setInstructorId(generateInstructorId());
         List<Instructor> instructors=getAllInstructors();
         instructors.add(instructor);
         fileStorageHandler.writeToFile(FILE_PATH, instructors);
+    }
+    public List<Instructor> sortInstructorByExperience(List<Instructor> instructors){
+        int n=instructors.size();
+        for(int i=0;i<n-1;i++){
+            for(int j=0;j<n-i-1;j++){
+                if(instructors.get(j).getExperienceYears()<instructors.get(j+1).getExperienceYears()){
+                    Instructor temp=instructors.get(j);
+                    instructors.set(j, instructors.get(j+1));
+                    instructors.set(j+1, temp);
+                }
+            }
+        }
+        return instructors;
+    }
+
+    public String generateInstructorId(){
+        List<Instructor> instructors=getAllInstructors();
+        int nextIdNumber=instructors.size()+1;
+        return String.format("I%03d",nextIdNumber);
     }
 }

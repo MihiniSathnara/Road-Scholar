@@ -1,0 +1,29 @@
+<!doctype html>
+    <html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Select Course</title>
+    </head>
+    <body>
+        <div>
+            <h2>Select a course to enroll</h2>
+            <div>
+                <th:block th:each="course: ${courses}">
+                    <div>
+                        <div>
+                            <div>
+                                <h5 th:text="${course.name}"></h5>
+                                <p th:text="${course.description}"></p>
+                                <form th:action="@{/student/enroll/course}" method="post">
+                                    <input type="hidden" name="courseId" th:value="${course.courseId}" />
+                                    <button type="submit">Select</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </th:block>
+            </div>
+        </div>
+    </body>
+</html>

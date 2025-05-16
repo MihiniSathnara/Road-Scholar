@@ -1,0 +1,14 @@
+[
+  {
+    "courseId": "C01",
+    "name": "Basic Driving",
+    "description": "Learn basic driving rules",
+    "price": 10000
+  },
+  {
+    "courseId": "C02",
+    "name": "Advanced Driving",
+    "description": "Highway and complex driving",
+    "price": 20000
+  }
+]

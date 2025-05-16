@@ -4,19 +4,8 @@
   "email" : "smihinis@gmail.com",
   "password" : "asdfg",
   "role" : "Student",
-  "stdId" : null
-}, {
-  "firstName" : "Sanduni",
-  "lastName" : "Aaloka",
-  "email" : "v6sathnarajsn@gmail.com",
-  "password" : "1234",
-  "role" : "Student",
-  "stdId" : null
-}, {
-  "firstName" : "Hello",
-  "lastName" : "World",
-  "email" : "deelakaalgawatta@gmail.com",
-  "password" : "1234asdf",
-  "role" : "Student",
-  "stdId" : null
+  "stdId" : "S001",
+  "enrolledCourseId" : "C01",
+  "selectedInstructorId" : null,
+  "paymentVerified" : false
 } ]

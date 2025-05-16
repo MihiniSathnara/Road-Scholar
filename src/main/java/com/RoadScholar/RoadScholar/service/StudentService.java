@@ -26,8 +26,26 @@ public class StudentService {
         return fileStorageHandler.readFromFile(FILE_PATH, new TypeReference<List<Student>>() {});
     }
     public void registerStudent(Student student){
+        student.setStdId(generateStudentId());
         List<Student> students=getAllStudents();
         students.add(student);
         fileStorageHandler.writeToFile(FILE_PATH, students);
+    }
+
+    public void updateStudent(Student updatedStudent){
+        List<Student> students=getAllStudents();
+        for(int i=0;i< students.size();i++){
+            if(students.get(i).getEmail().equalsIgnoreCase(updatedStudent.getEmail())){
+                students.set(i,updatedStudent);
+                break;
+            }
+        }
+        fileStorageHandler.writeToFile(FILE_PATH, students);
+    }
+
+    public String generateStudentId(){
+        List<Student> students=getAllStudents();
+        int nextIdNumber= students.size()+1;
+        return String.format("S%03d", nextIdNumber);
     }
 }
