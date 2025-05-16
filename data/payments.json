@@ -1,0 +1,7 @@
+[ {
+  "paymentId" : "35d56836-5da5-43e0-a1c9-14c02d784dab",
+  "studentId" : "S001",
+  "courseId" : "C01",
+  "amount" : 10000.0,
+  "paymentVerified" : false
+} ]

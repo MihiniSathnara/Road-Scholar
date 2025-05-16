@@ -2,6 +2,8 @@ package com.RoadScholar.RoadScholar.controller;
 
 import com.RoadScholar.RoadScholar.model.Student;
 import com.RoadScholar.RoadScholar.service.StudentService;
+import com.RoadScholar.RoadScholar.model.Payment;
+import com.RoadScholar.RoadScholar.service.PaymentService;
 import com.RoadScholar.RoadScholar.model.Course;
 import com.RoadScholar.RoadScholar.service.CourseService;
 import com.RoadScholar.RoadScholar.model.Instructor;
@@ -15,6 +17,7 @@ import org.springframework.ui.Model;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/student")
@@ -27,6 +30,9 @@ public class StudentController {
 
     @Autowired
     private InstructorService instructorService;
+
+    @Autowired
+    private PaymentService paymentService;
 
     @GetMapping("/enroll/course")
     public String showCourseSelection(Model model, HttpSession session){
@@ -71,5 +77,42 @@ public class StudentController {
         session.setAttribute("loggedInUser", student);
 
         return "redirect:/student/enroll/payment";
+    }
+
+    @GetMapping("/enroll/payment")
+    String showPaymentForm(Model model, HttpSession session) {
+        Student student = (Student) session.getAttribute("loggedInUser");
+        if (student == null || student.getEnrolledCourseId() == null || student.getSelectedInstructorId() == null){
+            return "redirect:/student/enroll/course";
+        }
+        Course selectedCourse=courseService.getCourseById(student.getEnrolledCourseId());
+        model.addAttribute("course", selectedCourse);
+        return "enroll-payment";
+    }
+
+    @PostMapping("/enroll/payment")
+    public String processPayment(HttpSession session){
+        Student student=(Student) session.getAttribute("loggedInUser");
+        if(student==null){
+            return "redirect:/login";
+        }
+
+        Course course=courseService.getCourseById(student.getEnrolledCourseId());
+
+        Payment payment=new Payment();
+        payment.setPaymentId(UUID.randomUUID().toString());
+        payment.setStudentId(student.getStudentId());
+        payment.setCourseId(course.getCourseId());
+        payment.setAmount(course.getPrice());
+        payment.setPaymentVerified(false);
+
+        paymentService.addPayment(payment);
+
+        return "redirect:/student/waiting";
+    }
+
+    @GetMapping("/waiting")
+    public String waitingForApproval(){
+        return "waiting-for-verification";
     }
 }

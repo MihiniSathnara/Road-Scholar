@@ -1,7 +1,7 @@
 package com.RoadScholar.RoadScholar.model;
 
 public class Student extends User{
-    private String stdId;
+    private String studentId;
     private String enrolledCourseId;
     private String selectedInstructorId;
     private boolean paymentVerified;
@@ -17,15 +17,15 @@ public class Student extends User{
 
     public Student(String firstName, String lastName, String email, String password, String role, String stdId){
         super(firstName, lastName, email, password, role);
-        this.stdId=stdId;
+        this.studentId=stdId;
     }
 
-    public String getStdId() {
-        return stdId;
+    public String getStudentId() {
+        return studentId;
     }
 
-    public void setStdId(String stdId) {
-        this.stdId = stdId;
+    public void setStudentId(String stdId) {
+        this.studentId = stdId;
     }
 
     public String getEnrolledCourseId() {

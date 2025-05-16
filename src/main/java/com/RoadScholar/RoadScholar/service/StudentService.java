@@ -26,7 +26,7 @@ public class StudentService {
         return fileStorageHandler.readFromFile(FILE_PATH, new TypeReference<List<Student>>() {});
     }
     public void registerStudent(Student student){
-        student.setStdId(generateStudentId());
+        student.setStudentId(generateStudentId());
         List<Student> students=getAllStudents();
         students.add(student);
         fileStorageHandler.writeToFile(FILE_PATH, students);

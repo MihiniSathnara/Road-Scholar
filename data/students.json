@@ -4,8 +4,8 @@
   "email" : "smihinis@gmail.com",
   "password" : "asdfg",
   "role" : "Student",
-  "stdId" : "S001",
+  "studentId" : "S001",
   "enrolledCourseId" : "C01",
-  "selectedInstructorId" : null,
+  "selectedInstructorId" : "I002",
   "paymentVerified" : false
 } ]
