@@ -39,7 +39,7 @@ public class StudentController {
         Student student=(Student) session.getAttribute("loggedInUser");
 
         if(student.getEnrolledCourseId()!=null && student.isPaymentVerified() && student.getSelectedInstructorId()!=null ){
-            return "redirect:/dashboard";
+            return "redirect:/student/dashboard";
         }
         List<Course> courses=courseService.getAllCourses();
         model.addAttribute("courses",courses);
@@ -114,6 +114,16 @@ public class StudentController {
     @GetMapping("/waiting")
     public String waitingForApproval(){
         return "waiting-for-verification";
+    }
+
+    @GetMapping("/dashboard")
+    public String showStudentDashboard(Model model, HttpSession session){
+        Student student=(Student) session.getAttribute("loggedInUser");
+        if(student==null){
+            return "redirect:/login";
+        }
+        model.addAttribute("student", student);
+        return "student-dashboard";
     }
 
 
