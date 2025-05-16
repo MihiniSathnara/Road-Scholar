@@ -38,4 +38,20 @@ public class PaymentService {
                 .filter(p -> p.getStudentId().equals(studentId))
                 .collect(Collectors.toList());
     }
+    public List<Payment> getUnverifiedPayments(){
+        return getAllPayments().stream()
+                .filter(payment -> !payment.isPaymentVerified())
+                .collect(Collectors.toList());
+    }
+
+    public void verifyPayment(String paymentId){
+        List<Payment> payments=getAllPayments();
+        for(Payment payment: payments){
+            if(payment.getPaymentId().equals(paymentId)){
+                payment.setPaymentVerified(true);
+                break;
+            }
+        }
+        fileStorageHandler.writeToFile(FILE_PATH, payments);
+    }
 }
