@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentService {
@@ -57,5 +58,11 @@ public class StudentService {
             }
         }
         return null;
+    }
+
+    public List<Student> getStudentsByInstructorId(String instructorId){
+        return getAllStudents().stream()
+                .filter(student -> instructorId.equals(student.getSelectedInstructorId()))
+                .collect(Collectors.toList());
     }
 }

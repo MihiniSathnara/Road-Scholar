@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Students</title>
+  </head>
+  <body>
+    <h2>My Students</h2>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Student Name</th>
+          <th>Email</th>
+          <th>Enrolled Course</th>
+          <th>Payment Verified</th>
+          <th>Progress (%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="student: ${students}">
+          <td th:text="${student['firstName']}">Student Name</td>
+          <td th:text="${student['email']}">Email</td>
+          <td th:text="${student['courseName']}">Course Name</td>
+          <td th:text="${student['paymentVerified']}">Yes/No</td>
+          <td th:text="${#numbers.formatDecimal(student['progress'], 0, 'POINT', 1, 'COMMA')} + '%'">Progress</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
