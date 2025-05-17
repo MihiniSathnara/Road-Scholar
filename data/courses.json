@@ -1,16 +1,13 @@
-[
-  {
-    "courseId": "C01",
-    "name": "Basic Driving",
-    "description": "Learn basic driving rules",
-    "price": 10000,
-    "totalAppointments": 10
-  },
-  {
-    "courseId": "C02",
-    "name": "Advanced Driving",
-    "description": "Highway and complex driving",
-    "price": 20000,
-    "totalAppointments": 10
-  }
-]
+[ {
+  "courseId" : "C02",
+  "name" : "Advanced Driving",
+  "price" : 2000000.0,
+  "description" : "Highway and complex driving",
+  "totalAppointments" : 15
+}, {
+  "courseId" : "C003",
+  "name" : "bike course",
+  "price" : 100000.0,
+  "description" : "for bike driving beginner",
+  "totalAppointments" : 12
+} ]

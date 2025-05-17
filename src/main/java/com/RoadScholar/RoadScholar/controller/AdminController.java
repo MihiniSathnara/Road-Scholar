@@ -91,4 +91,34 @@ public class AdminController {
         return "admin-users";
     }
 
+    @GetMapping("/courses")
+    public String showManageCoursePage(Model model){
+        List<Course> courses=courseService.getAllCourses();
+        model.addAttribute("courses", courses);
+        model.addAttribute("newCourse", new Course());
+
+        return "admin-courses";
+    }
+
+    @PostMapping("/courses/add")
+    public String addCourse(@ModelAttribute("newCourse") Course course){
+        course.setCourseId(courseService.generateNextCourseId());
+        courseService.addCourse(course);
+        return "redirect:/admin/courses";
+    }
+
+    @PostMapping("/courses/update")
+    public String updateCourse(@ModelAttribute Course updatedCourse){
+        courseService.updateCourse(updatedCourse);
+        return "redirect:/admin/courses";
+    }
+
+    @PostMapping("/courses/delete")
+    public String deleteCourse(@RequestParam String courseId){
+        courseService.deleteCourse(courseId);
+        return "redirect:/admin/courses";
+    }
+
+
+
 }

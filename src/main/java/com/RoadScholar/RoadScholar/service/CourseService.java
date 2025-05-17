@@ -38,4 +38,38 @@ public class CourseService {
                 .findFirst()
                 .orElse(null);
     }
+
+    public void deleteCourse(String courseId){
+        List<Course> courses=getAllCourses();
+        courses.removeIf(c -> c.getCourseId().equals(courseId));
+        fileStorageHandler.writeToFile(FILE_PATH, courses);
+    }
+
+    public void updateCourse(Course updatedCourse){
+        List<Course> courses=getAllCourses();
+        for(int i=0;i<courses.size(); i++){
+            if(courses.get(i).getCourseId().equals(updatedCourse.getCourseId())){
+                courses.set(i, updatedCourse);
+                break;
+            }
+        }
+        fileStorageHandler.writeToFile(FILE_PATH, courses);
+    }
+
+    public String generateNextCourseId(){
+        List<Course> courses=getAllCourses();
+        int maxId=0;
+
+        for(Course c: courses){
+            String id=c.getCourseId();
+            try{
+                int num=Integer.parseInt(id.substring(1));
+                if(num>maxId){
+                    maxId=num;
+                }
+            }catch (NumberFormatException ignored){
+            }
+        }
+        return String.format("C%03d", maxId+1);
+    }
 }
