@@ -6,6 +6,7 @@
     <title>Verify Payments</title>
   </head>
   <body>
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
     <div>
       <h2>Unverified Payments</h2>
       <div th:if="${payments.size()==0}">

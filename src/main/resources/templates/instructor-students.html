@@ -18,6 +18,7 @@
         </tr>
       </thead>
       <tbody>
+        <div th:replace="~{fragments/navbar :: navbar}"></div>
         <tr th:each="student: ${students}">
           <td th:text="${student['firstName']}">Student Name</td>
           <td th:text="${student['email']}">Email</td>

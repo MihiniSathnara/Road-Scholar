@@ -6,6 +6,7 @@
         <title>Admin Registration</title>
     </head>
     <body>
+        <div th:replace="~{fragments/navbar :: navbar}"></div>
         <div>
             <h2>Admin Registration</h2>
             <form th:action="@{/register/admin}" method="post">

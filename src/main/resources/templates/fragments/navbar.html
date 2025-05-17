@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="navbar">
+  <nav>
+    <ul>
+      <li><a th:href="@{/}">Home</a></li>
+      <li><a th:href="@{/about}">About</a></li>
+      <li><a th:href="@{/contact}">Contact</a></li>
+
+      <li th:if="${session.loggedInUser == null}">
+        <a th:href="@{/register-role-selection}">Register</a>
+      </li>
+      <li th:if="${session.loggedInUser == null}">
+        <a th:href="@{/login}">Login</a>
+      </li>
+
+      <li th:if="${session.loggedInUser != null}">
+        <a th:href="@{/logout}">Logout</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+</body>
+</html>

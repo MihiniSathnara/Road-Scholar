@@ -6,6 +6,7 @@
     <title>Schedule Appointment</title>
   </head>
   <body>
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
     <h2>Schedule Appointment</h2>
     <p th:text="${message}" th:if="${message}"></p>
     <form method="post" th:action="@{/student/schedule}">

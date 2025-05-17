@@ -6,6 +6,7 @@
     <title>Manage Courses</title>
   </head>
   <body>
+  <div th:replace="~{fragments/navbar :: navbar}"></div>
    <h2>Add New Course</h2>
   <form th:action="@{/admin/courses/add}" th:object="${newCourse}" method="post">
     <label>Name</label>

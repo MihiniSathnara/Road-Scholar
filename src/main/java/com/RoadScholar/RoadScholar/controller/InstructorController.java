@@ -33,13 +33,20 @@ public class InstructorController {
     private CourseService courseService;
 
     @GetMapping("/dashboard")
-    public String showInstructorDashboard(){
+    public String showInstructorDashboard(HttpSession session){
+        Instructor instructor=(Instructor) session.getAttribute("loggedInUser");
+        if(instructor==null){
+            return "redirect:/login";
+        }
         return "instructor-dashboard";
     }
 
     @GetMapping("/schedule")
     public String viewSchedule(HttpSession session, Model model){
         Instructor instructor=(Instructor) session.getAttribute("loggedInUser");
+        if(instructor==null){
+            return "redirect:/login";
+        }
 
         List<Appointment>  allAppointments=appointmentService.getAllAppointmentsSortedByDate();
         AppointmentQueue<Appointment> scheduleQueue=new AppointmentQueue<>();
@@ -89,7 +96,10 @@ public class InstructorController {
 
     @GetMapping("/profile")
     public String showInstructorProfile(HttpSession session, Model model){
-        Instructor instructor =(Instructor) session.getAttribute("loggedInUser");
+        Instructor instructor=(Instructor) session.getAttribute("loggedInUser");
+        if(instructor==null){
+            return "redirect:/login";
+        }
         model.addAttribute("instructor", instructor);
         return "instructor-profile";
     }

@@ -41,6 +41,9 @@ public class StudentController {
     @GetMapping("/enroll/course")
     public String showCourseSelection(Model model, HttpSession session){
         Student student=(Student) session.getAttribute("loggedInUser");
+        if(student==null){
+            return "redirect:/login";
+        }
 
         if(student.getEnrolledCourseId()!=null && student.isPaymentVerified() && student.getSelectedInstructorId()!=null ){
             return "redirect:/student/dashboard";
@@ -53,6 +56,9 @@ public class StudentController {
     @PostMapping("/enroll/course")
     public String selectCourse(@RequestParam String courseId, HttpSession session){
         Student student=(Student) session.getAttribute("loggedInUser");
+        if(student==null){
+            return "redirect:/login";
+        }
         student.setEnrolledCourseId(courseId);
         studentService.updateStudent(student);
         session.setAttribute("loggedInUser", student);
@@ -76,6 +82,9 @@ public class StudentController {
     @PostMapping("/enroll/instructor")
     public String selectInstructor(@RequestParam String instructorId, HttpSession session){
         Student student=(Student) session.getAttribute("loggedInUser");
+        if(student==null){
+            return "redirect:/login";
+        }
         student.setSelectedInstructorId(instructorId);
         studentService.updateStudent(student);
         session.setAttribute("loggedInUser", student);
@@ -116,7 +125,11 @@ public class StudentController {
     }
 
     @GetMapping("/waiting")
-    public String waitingForApproval(){
+    public String waitingForApproval(HttpSession session){
+        Student student=(Student) session.getAttribute("loggedInUser");
+        if(student==null){
+            return "redirect:/login";
+        }
         return "waiting-for-verification";
     }
 
@@ -133,6 +146,9 @@ public class StudentController {
     @GetMapping("/schedule")
     public String showSchedulePage(Model model, HttpSession session){
         Student student=(Student) session.getAttribute("loggedInUser");
+        if(student==null){
+            return "redirect:/login";
+        }
         if(appointmentService.hasUpcomingAppointment(student.getStudentId())){
             model.addAttribute("message", "You already have a scheduled appointment. Complete it to book a new one.");
             return "student-schedule";
@@ -146,6 +162,9 @@ public class StudentController {
     @PostMapping("/schedule")
     public String bookAppointment(@RequestParam String date, @RequestParam String timeSlot, HttpSession session,Model model) {
         Student student=(Student) session.getAttribute("loggedInUser");
+        if(student==null){
+            return "redirect:/login";
+        }
 
         List<String> bookedSlots=appointmentService.getBookedTimeSlots(date);
         if (bookedSlots.contains(timeSlot)){
@@ -199,9 +218,11 @@ public class StudentController {
     @GetMapping("/profile")
     public String viewProfile(HttpSession session,Model model){
         Student student = (Student) session.getAttribute("loggedInUser");
+        if(student==null){
+            return "redirect:/login";
+        }
         model.addAttribute("student", student);
         return "student-profile";
-
     }
 
 

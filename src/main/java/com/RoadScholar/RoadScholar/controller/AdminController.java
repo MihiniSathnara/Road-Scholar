@@ -34,12 +34,17 @@ public class AdminController {
     private InstructorService instructorService;
 
     @GetMapping("/dashboard")
-    public String showAdminDashboard(){
+    public String showAdminDashboard(HttpSession session){
+        Admin admin=(Admin) session.getAttribute("loggedInUser");
         return "admin-dashboard";
     }
 
     @GetMapping("/verify-payments")
-    public String showUnverifiedPayments(Model model){
+    public String showUnverifiedPayments(Model model, HttpSession session){
+        Admin admin=(Admin) session.getAttribute("loggedInUser");
+        if(admin==null){
+            return "redirect:/login";
+        }
         List<Payment> allPayments=paymentService.getAllPayments();
         List<Payment> unverifiedPayments=allPayments.stream()
                 .filter(p -> !p.isPaymentVerified())
@@ -49,7 +54,11 @@ public class AdminController {
     }
 
     @PostMapping("/verify-payments")
-    public String verifyPayment(@RequestParam String paymentId){
+    public String verifyPayment(@RequestParam String paymentId, HttpSession session){
+        Admin admin=(Admin) session.getAttribute("loggedInUser");
+        if(admin==null){
+            return "redirect:/login";
+        }
         paymentService.verifyPayment(paymentId);
 
         Payment payment=paymentService.getAllPayments().stream()
@@ -68,20 +77,32 @@ public class AdminController {
     }
 
     @GetMapping("/appointments")
-    public String viewAppointments(Model model){
+    public String viewAppointments(Model model, HttpSession session){
+        Admin admin=(Admin) session.getAttribute("loggedInUser");
+        if(admin==null){
+            return "redirect:/login";
+        }
         List<Appointment> appointments=appointmentService.getAllAppointmentsSortedByDate();
         model.addAttribute("appointments", appointments);
         return "admin-appointments";
     }
 
     @PostMapping("/appointments")
-    public String completeAppointment(@RequestParam String appointmentId){
+    public String completeAppointment(@RequestParam String appointmentId, HttpSession session){
+        Admin admin=(Admin) session.getAttribute("loggedInUser");
+        if(admin==null){
+            return "redirect:/login";
+        }
         appointmentService.markAppointmentCompletedById(appointmentId);
         return "redirect:/admin/appointments";
     }
 
     @GetMapping("/users")
-    public String viewAllUsers(Model model){
+    public String viewAllUsers(Model model, HttpSession session){
+        Admin admin=(Admin) session.getAttribute("loggedInUser");
+        if(admin==null){
+            return "redirect:/login";
+        }
         List<Student> students=studentService.getAllStudents();
         List<Instructor> instructors=instructorService.getAllInstructors();
 
@@ -92,7 +113,11 @@ public class AdminController {
     }
 
     @GetMapping("/courses")
-    public String showManageCoursePage(Model model){
+    public String showManageCoursePage(Model model, HttpSession session){
+        Admin admin=(Admin) session.getAttribute("loggedInUser");
+        if(admin==null){
+            return "redirect:/login";
+        }
         List<Course> courses=courseService.getAllCourses();
         model.addAttribute("courses", courses);
         model.addAttribute("newCourse", new Course());
@@ -101,26 +126,42 @@ public class AdminController {
     }
 
     @PostMapping("/courses/add")
-    public String addCourse(@ModelAttribute("newCourse") Course course){
+    public String addCourse(@ModelAttribute("newCourse") Course course, HttpSession session){
+        Admin admin=(Admin) session.getAttribute("loggedInUser");
+        if(admin==null){
+            return "redirect:/login";
+        }
         course.setCourseId(courseService.generateNextCourseId());
         courseService.addCourse(course);
         return "redirect:/admin/courses";
     }
 
     @PostMapping("/courses/update")
-    public String updateCourse(@ModelAttribute Course updatedCourse){
+    public String updateCourse(@ModelAttribute Course updatedCourse, HttpSession session){
+        Admin admin=(Admin) session.getAttribute("loggedInUser");
+        if(admin==null){
+            return "redirect:/login";
+        }
         courseService.updateCourse(updatedCourse);
         return "redirect:/admin/courses";
     }
 
     @PostMapping("/courses/delete")
-    public String deleteCourse(@RequestParam String courseId){
+    public String deleteCourse(@RequestParam String courseId, HttpSession session){
+        Admin admin=(Admin) session.getAttribute("loggedInUser");
+        if(admin==null){
+            return "redirect:/login";
+        }
         courseService.deleteCourse(courseId);
         return "redirect:/admin/courses";
     }
 
     @GetMapping("/reports")
-    public String generateReport(Model model){
+    public String generateReport(Model model, HttpSession session){
+        Admin admin=(Admin) session.getAttribute("loggedInUser");
+        if(admin==null){
+            return "redirect:/login";
+        }
         List<Student> students=studentService.getAllStudents();
         List<Instructor> instructors=instructorService.getAllInstructors();
         List<Course> courses=courseService.getAllCourses();
@@ -144,6 +185,9 @@ public class AdminController {
     @GetMapping("/profile")
     public String showAdminProfile(HttpSession session, Model model){
         Admin admin=(Admin) session.getAttribute("loggedInUser");
+        if(admin==null){
+            return "redirect:/login";
+        }
         model.addAttribute("admin",admin);
         return "admin-profile";
     }
