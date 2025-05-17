@@ -139,10 +139,13 @@ public class AdminController {
         model.addAttribute("totalPayments",totalCollected);
 
         return "admin-report";
-
-
     }
 
-
+    @GetMapping("/profile")
+    public String showAdminProfile(HttpSession session, Model model){
+        Admin admin=(Admin) session.getAttribute("loggedInUser");
+        model.addAttribute("admin",admin);
+        return "admin-profile";
+    }
 
 }

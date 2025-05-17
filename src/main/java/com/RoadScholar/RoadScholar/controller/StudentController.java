@@ -196,5 +196,13 @@ public class StudentController {
         return "student-progress";
     }
 
+    @GetMapping("/profile")
+    public String viewProfile(HttpSession session,Model model){
+        Student student = (Student) session.getAttribute("loggedInUser");
+        model.addAttribute("student", student);
+        return "student-profile";
+
+    }
+
 
 }

@@ -86,4 +86,11 @@ public class InstructorController {
         model.addAttribute("students", studentProgressList);
         return "instructor-students";
     }
+
+    @GetMapping("/profile")
+    public String showInstructorProfile(HttpSession session, Model model){
+        Instructor instructor =(Instructor) session.getAttribute("loggedInUser");
+        model.addAttribute("instructor", instructor);
+        return "instructor-profile";
+    }
 }

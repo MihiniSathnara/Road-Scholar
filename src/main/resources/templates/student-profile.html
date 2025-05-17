@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Profile</title>
+  </head>
+  <body>
+    <table border="1">
+      <tr>
+        <th>Full Name</th>
+        <td th:text="${student.firstName +' ' + student.lastName}"></td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td th:text="${student.email}"></td>
+      </tr>
+      <tr>
+        <th>Enrolled Course ID</th>
+        <td th:text="${student.enrolledCourseId}"></td>
+      </tr>
+      <tr>
+        <th>Assigned Instructor ID</th>
+        <td th:text="${student.selectedInstructorId}"></td>
+      </tr>
+      <tr>
+        <th>Payment Verified</th>
+        <td th:text="${student.paymentVerified} ? 'Yes' : 'No'"></td>
+      </tr>
+    </table>
+  </body>
+</html>
