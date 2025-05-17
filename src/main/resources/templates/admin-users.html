@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>All Users</title>
+    </head>
+    <body>
+        <h2>Students</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Email</th>
+                    <th>Course</th>
+                    <th>Instructor</th>
+                    <th>Payment Verified</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="s: ${students}">
+                    <td th:text="${s.firstName +' ' +s.lastName}"></td>
+                    <td th:text="${s.email}"></td>
+                    <td th:text="${s.enrolledCourseId}"></td>
+                    <td th:text="${s.selectedInstructorId}"></td>
+                    <td th:text="${s.paymentVerified}==true ? 'Yes' : 'No'"></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <h2>Instructors</h2>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Experience (years)</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="i : ${instructors}">
+                    <td th:text="${i.firstName + ' ' + i.lastName}"></td>
+                    <td th:text="${i.email}"></td>
+                    <td th:text="${i.experienceYears}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

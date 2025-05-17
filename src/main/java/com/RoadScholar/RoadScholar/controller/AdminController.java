@@ -1,11 +1,7 @@
 package com.RoadScholar.RoadScholar.controller;
 
 import com.RoadScholar.RoadScholar.model.*;
-import com.RoadScholar.RoadScholar.service.AdminService;
-import com.RoadScholar.RoadScholar.service.StudentService;
-import com.RoadScholar.RoadScholar.service.PaymentService;
-import com.RoadScholar.RoadScholar.service.CourseService;
-import com.RoadScholar.RoadScholar.service.AppointmentService;
+import com.RoadScholar.RoadScholar.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +29,9 @@ public class AdminController {
 
     @Autowired
     private AppointmentService appointmentService;
+
+    @Autowired
+    private InstructorService instructorService;
 
     @GetMapping("/dashboard")
     public String showAdminDashboard(){
@@ -79,6 +78,17 @@ public class AdminController {
     public String completeAppointment(@RequestParam String appointmentId){
         appointmentService.markAppointmentCompletedById(appointmentId);
         return "redirect:/admin/appointments";
+    }
+
+    @GetMapping("/users")
+    public String viewAllUsers(Model model){
+        List<Student> students=studentService.getAllStudents();
+        List<Instructor> instructors=instructorService.getAllInstructors();
+
+        model.addAttribute("students", students);
+        model.addAttribute("instructors", instructors);
+
+        return "admin-users";
     }
 
 }
