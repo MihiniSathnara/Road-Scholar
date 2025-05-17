@@ -11,5 +11,5 @@
   "instructorId" : "I001",
   "date" : "2025-05-16",
   "timeSlot" : "09:00 - 11:00",
-  "completed" : false
+  "completed" : true
 } ]

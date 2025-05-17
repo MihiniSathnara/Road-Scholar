@@ -1,13 +1,11 @@
 package com.RoadScholar.RoadScholar.controller;
 
-import com.RoadScholar.RoadScholar.model.Admin;
+import com.RoadScholar.RoadScholar.model.*;
 import com.RoadScholar.RoadScholar.service.AdminService;
-import com.RoadScholar.RoadScholar.model.Student;
 import com.RoadScholar.RoadScholar.service.StudentService;
-import com.RoadScholar.RoadScholar.model.Payment;
 import com.RoadScholar.RoadScholar.service.PaymentService;
-import com.RoadScholar.RoadScholar.model.Course;
 import com.RoadScholar.RoadScholar.service.CourseService;
+import com.RoadScholar.RoadScholar.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +30,9 @@ public class AdminController {
 
     @Autowired
     private CourseService courseService;
+
+    @Autowired
+    private AppointmentService appointmentService;
 
     @GetMapping("/dashboard")
     public String showAdminDashboard(){
@@ -66,4 +67,18 @@ public class AdminController {
         }
         return "redirect:/admin/verify-payments";
     }
+
+    @GetMapping("/appointments")
+    public String viewAppointments(Model model){
+        List<Appointment> appointments=appointmentService.getAllAppointmentsSortedByDate();
+        model.addAttribute("appointments", appointments);
+        return "admin-appointments";
+    }
+
+    @PostMapping("/appointments")
+    public String completeAppointment(@RequestParam String appointmentId){
+        appointmentService.markAppointmentCompletedById(appointmentId);
+        return "redirect:/admin/appointments";
+    }
+
 }

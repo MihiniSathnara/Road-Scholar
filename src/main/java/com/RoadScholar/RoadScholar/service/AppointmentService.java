@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -53,6 +54,23 @@ public class AppointmentService {
         for(Appointment a: appointments){
             if(a.getStudentId().equals(studentId) && !a.isCompleted()){
                 a.setCompleted(true);
+                break;
+            }
+        }
+        saveAppointments(appointments);
+    }
+
+    public List<Appointment> getAllAppointmentsSortedByDate(){
+        return getAllAppointments().stream()
+                .sorted(Comparator.comparing(Appointment::getDate))
+                .collect(Collectors.toList());
+    }
+
+    public void markAppointmentCompletedById(String appointmentId){
+        List<Appointment> appointments=getAllAppointments();
+        for(Appointment appointment: appointments){
+            if(appointment.getAppointmentId().equals(appointmentId)){
+                appointment.setCompleted(true);
                 break;
             }
         }
