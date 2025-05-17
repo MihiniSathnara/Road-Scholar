@@ -1,0 +1,15 @@
+[ {
+  "appointmentId" : "712077f3-0554-490e-a404-19dff64747f7",
+  "studentId" : "S001",
+  "instructorId" : "I002",
+  "date" : "2025-05-20",
+  "timeSlot" : "11:30 - 13:30",
+  "completed" : false
+}, {
+  "appointmentId" : "b71953eb-00e2-4423-a4f5-2fec6be9f05d",
+  "studentId" : "S002",
+  "instructorId" : "I001",
+  "date" : "2025-05-16",
+  "timeSlot" : "09:00 - 11:00",
+  "completed" : false
+} ]

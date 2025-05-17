@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Schedule Appointment</title>
+  </head>
+  <body>
+    <h2>Schedule Appointment</h2>
+    <p th:text="${message}" th:if="${message}"></p>
+    <form method="post" th:action="@{/student/schedule}">
+      <label for="date">Choose a date</label>
+      <input type="date" id="date" name="date" min="{{todayDate}}" required>
+      <br>
+
+      <label>Select Time Slot</label>
+      <div th:each="slot: ${timeSlots}">
+        <input type="radio" name="timeSlot" th:value="${slot}" required>
+        <label th:text="${slot}"></label>
+        <br>
+      </div>
+      <button type="submit">Book Appointment</button>
+    </form>
+  </body>
+</html>

@@ -1,13 +1,11 @@
 package com.RoadScholar.RoadScholar.controller;
 
 import com.RoadScholar.RoadScholar.model.Student;
-import com.RoadScholar.RoadScholar.service.StudentService;
+import com.RoadScholar.RoadScholar.service.*;
 import com.RoadScholar.RoadScholar.model.Payment;
-import com.RoadScholar.RoadScholar.service.PaymentService;
 import com.RoadScholar.RoadScholar.model.Course;
-import com.RoadScholar.RoadScholar.service.CourseService;
 import com.RoadScholar.RoadScholar.model.Instructor;
-import com.RoadScholar.RoadScholar.service.InstructorService;
+import com.RoadScholar.RoadScholar.model.Appointment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +13,8 @@ import org.springframework.ui.Model;
 
 
 import jakarta.servlet.http.HttpSession;
+
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -33,6 +33,9 @@ public class StudentController {
 
     @Autowired
     private PaymentService paymentService;
+
+    @Autowired
+    private AppointmentService appointmentService;
 
     @GetMapping("/enroll/course")
     public String showCourseSelection(Model model, HttpSession session){
@@ -124,6 +127,41 @@ public class StudentController {
         }
         model.addAttribute("student", student);
         return "student-dashboard";
+    }
+
+    @GetMapping("/schedule")
+    public String showSchedulePage(Model model, HttpSession session){
+        Student student=(Student) session.getAttribute("loggedInUser");
+        if(appointmentService.hasUpcomingAppointment(student.getStudentId())){
+            model.addAttribute("message", "You already have a scheduled appointment. Complete it to book a new one.");
+            return "student-schedule";
+        }
+
+        List<String> timeSlots= Arrays.asList("09:00 - 11:00", "11:30 - 13:30", "14:00 - 16:00");
+        model.addAttribute("timeSlots", timeSlots);
+        return "student-schedule";
+    }
+
+    @PostMapping("/schedule")
+    public String bookAppointment(@RequestParam String date, @RequestParam String timeSlot, HttpSession session,Model model) {
+        Student student=(Student) session.getAttribute("loggedInUser");
+
+        List<String> bookedSlots=appointmentService.getBookedTimeSlots(date);
+        if (bookedSlots.contains(timeSlot)){
+            model.addAttribute("message", "This timeslot is already booked.");
+            return "student-schedule";
+        }
+
+        Appointment appointment = new Appointment();
+        appointment.setAppointmentId(UUID.randomUUID().toString());
+        appointment.setStudentId(student.getStudentId());
+        appointment.setInstructorId(student.getSelectedInstructorId());
+        appointment.setDate(date);
+        appointment.setTimeSlot(timeSlot);
+        appointment.setCompleted(false);
+
+        appointmentService.addAppointment(appointment);
+        return "redirect:/student/dashboard";
     }
 
 
