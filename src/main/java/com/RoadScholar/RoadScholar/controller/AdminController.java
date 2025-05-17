@@ -119,6 +119,30 @@ public class AdminController {
         return "redirect:/admin/courses";
     }
 
+    @GetMapping("/reports")
+    public String generateReport(Model model){
+        List<Student> students=studentService.getAllStudents();
+        List<Instructor> instructors=instructorService.getAllInstructors();
+        List<Course> courses=courseService.getAllCourses();
+        List<Appointment> appointments=appointmentService.getAllAppointments();
+        List<Payment> payments=paymentService.getAllPayments();
+
+        double totalCollected=payments.stream()
+                .filter(Payment::isPaymentVerified)
+                .mapToDouble(Payment::getAmount)
+                .sum();
+
+        model.addAttribute("totalStudents", students.size());
+        model.addAttribute("totalInstructors", instructors.size());
+        model.addAttribute("totalCourses", courses.size());
+        model.addAttribute("totalAppointments", appointments.size());
+        model.addAttribute("totalPayments",totalCollected);
+
+        return "admin-report";
+
+
+    }
+
 
 
 }
