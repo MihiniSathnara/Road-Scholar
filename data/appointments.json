@@ -12,4 +12,11 @@
   "date" : "2025-05-16",
   "timeSlot" : "09:00 - 11:00",
   "completed" : true
+}, {
+  "appointmentId" : "e28ea87b-33e9-4ba3-9ef5-ef65305af10c",
+  "studentId" : "S002",
+  "instructorId" : "I001",
+  "date" : "2025-05-21",
+  "timeSlot" : "14:00 - 16:00",
+  "completed" : false
 } ]

@@ -60,7 +60,7 @@ public class LoginController {
             }
             if(instructor!=null){
                 session.setAttribute("loggedInUser", instructor);
-                return "redirect:/instructor/home";
+                return "redirect:/instructor/dashboard";
             }
         }else if(role.equalsIgnoreCase("admin")){
             Admin admin=null;
@@ -77,11 +77,6 @@ public class LoginController {
         }
         model.addAttribute("error", "Invalid credentials or role mismatch.");
         return "login";
-    }
-
-    @GetMapping("/instructor/home")
-    public String instructorHome(){
-        return "instructor-home";
     }
 
     @GetMapping("/logout")

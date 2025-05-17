@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Instructor Schedule</title>
+  </head>
+  <body>
+    <h2>Your Upcoming Appointments</h2>
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Time Slot</th>
+        <th>Student ID</th>
+      </tr>
+      <tr th:each="appointment : ${appointments}">
+        <td th:text="${appointment.date}"></td>
+        <td th:text="${appointment.timeSlot}"></td>
+        <td th:text="${appointment.studentId}"></td>
+      </tr>
+    </table>
+  </body>
+</html>
