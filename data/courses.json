@@ -3,12 +3,14 @@
     "courseId": "C01",
     "name": "Basic Driving",
     "description": "Learn basic driving rules",
-    "price": 10000
+    "price": 10000,
+    "totalAppointments": 10
   },
   {
     "courseId": "C02",
     "name": "Advanced Driving",
     "description": "Highway and complex driving",
-    "price": 20000
+    "price": 20000,
+    "totalAppointments": 10
   }
 ]

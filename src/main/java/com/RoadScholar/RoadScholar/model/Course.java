@@ -5,6 +5,7 @@ public class Course {
     private String name;
     private double price;
     private String description;
+    private int totalAppointments;
 
     public String getCourseId() {
         return courseId;
@@ -36,5 +37,13 @@ public class Course {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getTotalAppointments() {
+        return totalAppointments;
+    }
+
+    public void setTotalAppointments(int totalAppointments) {
+        this.totalAppointments = totalAppointments;
     }
 }

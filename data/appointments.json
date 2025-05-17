@@ -1,22 +1,17 @@
 [ {
-  "appointmentId" : "712077f3-0554-490e-a404-19dff64747f7",
+  "appointmentId" : "a3dd23c3-f0f6-4de0-8fb8-ecc4570df706",
   "studentId" : "S001",
   "instructorId" : "I002",
-  "date" : "2025-05-20",
-  "timeSlot" : "11:30 - 13:30",
-  "completed" : false
-}, {
-  "appointmentId" : "b71953eb-00e2-4423-a4f5-2fec6be9f05d",
-  "studentId" : "S002",
-  "instructorId" : "I001",
-  "date" : "2025-05-16",
-  "timeSlot" : "09:00 - 11:00",
+  "courseId" : "C01",
+  "date" : "2025-05-17",
+  "timeSlot" : "14:00 - 16:00",
   "completed" : true
 }, {
-  "appointmentId" : "e28ea87b-33e9-4ba3-9ef5-ef65305af10c",
-  "studentId" : "S002",
-  "instructorId" : "I001",
-  "date" : "2025-05-21",
-  "timeSlot" : "14:00 - 16:00",
-  "completed" : false
+  "appointmentId" : "de163ef5-535c-43d2-930e-2b6b06129f4a",
+  "studentId" : "S001",
+  "instructorId" : "I002",
+  "courseId" : "C01",
+  "date" : "2025-05-28",
+  "timeSlot" : "09:00 - 11:00",
+  "completed" : true
 } ]

@@ -4,6 +4,7 @@ public class Appointment {
     private String appointmentId;
     private String studentId;
     private String instructorId;
+    private String courseId;
     private String date;
     private String timeSlot;
     private boolean completed;
@@ -54,5 +55,13 @@ public class Appointment {
 
     public void setCompleted(boolean completed) {
         this.completed = completed;
+    }
+
+    public String getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
     }
 }

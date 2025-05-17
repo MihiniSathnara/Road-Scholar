@@ -18,6 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/student")
@@ -156,12 +157,43 @@ public class StudentController {
         appointment.setAppointmentId(UUID.randomUUID().toString());
         appointment.setStudentId(student.getStudentId());
         appointment.setInstructorId(student.getSelectedInstructorId());
+        appointment.setCourseId(student.getEnrolledCourseId());
         appointment.setDate(date);
         appointment.setTimeSlot(timeSlot);
         appointment.setCompleted(false);
 
         appointmentService.addAppointment(appointment);
         return "redirect:/student/dashboard";
+    }
+
+    @GetMapping("/progress")
+    public String viewProgress(HttpSession session, Model model){
+        Student student=(Student) session.getAttribute("loggedInUser");
+        if(student==null){
+            return "redirect:/login";
+        }
+        String studentId=student.getStudentId();
+        String courseId=student.getEnrolledCourseId();
+
+        Course course=courseService.getCourseById(courseId);
+        int totalAppointments=course.getTotalAppointments();
+
+        List<Appointment> appointments=appointmentService.getAllAppointments().stream()
+                .filter(a -> a.getStudentId().equals(studentId)
+                && a.getCourseId().equals(courseId)
+                && a.isCompleted())
+                .collect(Collectors.toList());
+
+        int completedAppointments=appointments.size();
+
+        double progressPercent=(double) completedAppointments/totalAppointments*100;
+
+        model.addAttribute("progressPercent", progressPercent);
+        model.addAttribute("completedAppointments", completedAppointments);
+        model.addAttribute("totalAppointments", totalAppointments);
+        model.addAttribute("courseName", course.getName());
+
+        return "student-progress";
     }
 
 
