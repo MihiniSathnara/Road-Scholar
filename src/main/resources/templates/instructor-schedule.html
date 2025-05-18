@@ -1,24 +1,29 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Instructor Schedule</title>
-  </head>
-  <body>
-    <div th:replace="~{fragments/navbar :: navbar}"></div>
-    <h2>Your Upcoming Appointments</h2>
-    <table>
-      <tr>
-        <th>Date</th>
-        <th>Time Slot</th>
-        <th>Student ID</th>
-      </tr>
-      <tr th:each="appointment : ${appointments}">
-        <td th:text="${appointment.date}"></td>
-        <td th:text="${appointment.timeSlot}"></td>
-        <td th:text="${appointment.studentId}"></td>
-      </tr>
-    </table>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Instructor Schedule</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="schedule-container">
+  <h2>Your Upcoming Appointments</h2>
+  <div class="appointment-list">
+    <th:block th:if="${appointments.size() == 0}">
+      <p>No upcoming appointments.</p>
+    </th:block>
+    <th:block th:each="appointment : ${appointments}">
+      <div class="appointment-card">
+        <p><strong>Date:</strong> <span th:text="${appointment.date}"></span></p>
+        <p><strong>Time Slot:</strong> <span th:text="${appointment.timeSlot}"></span></p>
+        <p><strong>Student ID:</strong> <span th:text="${appointment.studentId}"></span></p>
+      </div>
+    </th:block>
+  </div>
+</div>
+
+</body>
 </html>

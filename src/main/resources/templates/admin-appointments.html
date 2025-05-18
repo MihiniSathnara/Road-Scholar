@@ -1,43 +1,47 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Manage Appointments</title>
+        <link rel="stylesheet" th:href="@{/css/styles.css}">
     </head>
     <body>
     <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <div class="appointments-container">
         <h2>All Scheduled Appointments</h2>
-        <table>
+        <table class="appointments-table">
             <thead>
-                <tr>
-                    <th>Appointment ID</th>
-                    <th>Student ID</th>
-                    <th>Instructor ID</th>
-                    <th>Date</th>
-                    <th>Time Slot</th>
-                    <th>Status</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
+            <tr>
+                <th>Appointment ID</th>
+                <th>Student ID</th>
+                <th>Instructor ID</th>
+                <th>Date</th>
+                <th>Time Slot</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
             </thead>
             <tbody>
-                <tr th:each="appointment: ${appointments}">
-                    <td th:text="${appointment.appointmentId}"></td>
-                    <td th:text="${appointment.studentId}"></td>
-                    <td th:text="${appointment.instructorId}"></td>
-                    <td th:text="${appointment.date}"></td>
-                    <td th:text="${appointment.timeSlot}"></td>
-                    <td th:text="${appointment.completed ? 'Completed' : 'Pending'}"></td>
-                    <td>
-                        <form th:action="@{/admin/appointments}" method="post">
-                            <input type="hidden" name="appointmentId" th:value="${appointment.appointmentId}" />
-                            <button type="submit" th:disabled="${appointment.completed}">Mark as Completed</button>
-                        </form>
-                    </td>
-                </tr>
+            <tr th:each="appointment: ${appointments}">
+                <td th:text="${appointment.appointmentId}"></td>
+                <td th:text="${appointment.studentId}"></td>
+                <td th:text="${appointment.instructorId}"></td>
+                <td th:text="${appointment.date}"></td>
+                <td th:text="${appointment.timeSlot}"></td>
+                <td th:text="${appointment.completed ? 'Completed' : 'Pending'}"
+                    th:classappend="${appointment.completed} ? 'status-completed' : 'status-pending'"></td>
+                <td>
+                    <form th:action="@{/admin/appointments}" method="post">
+                        <input type="hidden" name="appointmentId" th:value="${appointment.appointmentId}" />
+                        <button type="submit" th:disabled="${appointment.completed}">Mark as Completed</button>
+                    </form>
+                </td>
+            </tr>
             </tbody>
         </table>
+    </div>
 
 
 

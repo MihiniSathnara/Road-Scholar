@@ -1,23 +1,25 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Track Progress</title>
-    </head>
-    <body>
-        <div th:replace="~{fragments/navbar :: navbar}"></div>
-        <div>
-            <h2>Course Progress</h2>
-            <p>Course: <span th:text="${courseName}"></span></p>
-            <p>Completed Lessons: <span th:text="${completedAppointments}"></span></p>
-            <p>Progress: <span th:text="${progressPercent}">0</span>%</p>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Track Progress</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<div class="progress-container">
+    <h2>Course Progress</h2>
+    <p>Course: <span th:text="${courseName}"></span></p>
+    <p>Completed Lessons: <span th:text="${completedAppointments}"></span></p>
+    <p>Progress: <span th:text="${progressPercent}">0</span>%</p>
 
-            <div style="width:300px; background-color: #ddd;">
-                <div th:if="${progressPercent != null}"
-                     th:style="|width:${progressPercent}%; background-color:green; height:20px;|">
-                </div>
-            </div>
+    <div class="progress-bar-background">
+        <div th:if="${progressPercent != null}"
+             th:style="|width:${progressPercent}%;|"
+             class="progress-bar-fill">
         </div>
-    </body>
+    </div>
+</div>
+</body>
 </html>

@@ -1,11 +1,20 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Register</title>
+  <title>Contact</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
   <div th:replace="~{fragments/navbar :: navbar}"></div>
+  <div class="contact-container">
+    <div class="glass-box contact-info">
+      <h1>Contact Us</h1>
+      <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+      <p><strong>Address:</strong> 123 Road Scholar Lane, Drive City, DS 45678</p>
+      <p><strong>Opening Hours:</strong> Monday - Friday, 8:00 AM - 5:00 PM</p>
+    </div>
+  </div>
 </body>
 </html>

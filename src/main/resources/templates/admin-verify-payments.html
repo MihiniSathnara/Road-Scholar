@@ -1,26 +1,32 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Verify Payments</title>
-  </head>
-  <body>
-    <div th:replace="~{fragments/navbar :: navbar}"></div>
-    <div>
-      <h2>Unverified Payments</h2>
-      <div th:if="${payments.size()==0}">
-        <p>No unverified payments.</p>
-      </div>
-      <div th:each="payment: ${payments}">
-        <p th:text="'Student ID: ' +${payment.studentId}"></p>
-        <p th:text="'Course ID: ' + ${payment.courseId}"></p>
-        <p th:text="'Amount: Rs.' + ${payment.amount}"></p>
-        <form th:action="@{/admin/verify-payments}" method="post">
-          <input type="hidden" name="paymentId" th:value="${payment.paymentId}" />
-          <button type="submit">Verify</button>
-        </form>
-      </div>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Verify Payments</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="verify-payments-container">
+  <h2>Unverified Payments</h2>
+
+  <div th:if="${payments.size() == 0}">
+    <p>No unverified payments.</p>
+  </div>
+
+  <div class="payments-list" th:each="payment : ${payments}">
+    <div class="payment-box">
+      <p><strong>Student ID:</strong> <span th:text="${payment.studentId}"></span></p>
+      <p><strong>Course ID:</strong> <span th:text="${payment.courseId}"></span></p>
+      <p><strong>Amount:</strong> Rs. <span th:text="${payment.amount}"></span></p>
+      <form th:action="@{/admin/verify-payments}" method="post">
+        <input type="hidden" name="paymentId" th:value="${payment.paymentId}" />
+        <button type="submit" class="btn-verify">Verify</button>
+      </form>
     </div>
-  </body>
+  </div>
+</div>
+</body>
 </html>

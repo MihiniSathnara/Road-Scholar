@@ -1,25 +1,25 @@
 [ {
-  "firstName" : "Hello",
-  "lastName" : "World",
-  "email" : "v6sathnarajsn@gmail.com",
-  "password" : "asdfg",
+  "firstName" : "Vihindu",
+  "lastName" : "Damsana",
+  "email" : "vihindudamsana04@gmail.com",
+  "password" : "1234asdf",
   "role" : "instructor",
   "instructorId" : "I001",
   "experienceYears" : 3
 }, {
-  "firstName" : "Sanduni",
-  "lastName" : "Aaloka",
-  "email" : "goalpha484@gmail.com",
-  "password" : "asdfg",
+  "firstName" : "Christina",
+  "lastName" : "Perera",
+  "email" : "PereraChristina2004@gmail.com",
+  "password" : "1234asdf",
   "role" : "instructor",
   "instructorId" : "I002",
-  "experienceYears" : 9
+  "experienceYears" : 1
 }, {
-  "firstName" : "dinul",
-  "lastName" : "kasun",
-  "email" : "deelakaalgawatta@gmail.com",
-  "password" : "asdfg",
+  "firstName" : "Thimaya",
+  "lastName" : "Nethmi",
+  "email" : "thimayanethmi@gmail.com",
+  "password" : "1234asdf",
   "role" : "instructor",
   "instructorId" : "I003",
-  "experienceYears" : 1
+  "experienceYears" : 5
 } ]

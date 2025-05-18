@@ -1,21 +1,11 @@
 [ {
-  "firstName" : "Mihini",
-  "lastName" : "Sathnara",
-  "email" : "smihinis@gmail.com",
-  "password" : "asdfg",
+  "firstName" : "Nimeshani",
+  "lastName" : "Rathnayaka",
+  "email" : "rathnayakarmsn@gmail.com",
+  "password" : "1234asdf",
   "role" : "Student",
   "studentId" : "S001",
-  "enrolledCourseId" : "C01",
+  "enrolledCourseId" : "C002",
   "selectedInstructorId" : "I002",
-  "paymentVerified" : true
-}, {
-  "firstName" : "Kavindu",
-  "lastName" : "Danushka",
-  "email" : "IT24102332@my.sliit.lk",
-  "password" : "asdfg",
-  "role" : "Student",
-  "studentId" : "S002",
-  "enrolledCourseId" : "C02",
-  "selectedInstructorId" : "I001",
   "paymentVerified" : true
 } ]

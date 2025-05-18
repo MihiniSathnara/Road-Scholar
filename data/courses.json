@@ -1,13 +1,19 @@
 [ {
-  "courseId" : "C02",
-  "name" : "Advanced Driving",
-  "price" : 2000000.0,
-  "description" : "Highway and complex driving",
+  "courseId" : "C001",
+  "name" : "Beginner Driver Education (BDE) Course",
+  "price" : 20000.0,
+  "description" : "For new drivers with no prior experience. Includes classroom instruction and in-car training.",
   "totalAppointments" : 15
 }, {
+  "courseId" : "C002",
+  "name" : "Manual Transmission Training",
+  "price" : 22000.0,
+  "description" : "Teaches how to drive a car with a manual (stick-shift) gearbox.",
+  "totalAppointments" : 8
+}, {
   "courseId" : "C003",
-  "name" : "bike course",
-  "price" : 100000.0,
-  "description" : "for bike driving beginner",
-  "totalAppointments" : 12
+  "name" : "Online/Theoretical Driving Course",
+  "price" : 7000.0,
+  "description" : "Theory part of driver education, offered online for convenience.",
+  "totalAppointments" : 3
 } ]

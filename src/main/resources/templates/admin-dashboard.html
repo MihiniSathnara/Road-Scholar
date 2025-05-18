@@ -1,34 +1,25 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Admin Dashboard</title>
+        <link rel="stylesheet" th:href="@{/css/styles.css}" />
     </head>
     <body>
         <div>
             <div th:replace="~{fragments/navbar :: navbar}"></div>
-            <h2>Admin Dashboard</h2>
-            <div>
-                <div>
-                    <a th:href="@{/admin/verify-payments}">Verify Payments</a>
-                </div>
-                <div>
-                    <a th:href="@{/admin/appointments}">Manage Appointments</a>
-                </div>
-                <div>
-                    <a th:href="@{/admin/users}">Manage Users</a>
-                </div>
-                <div>
-                    <a th:href="@{/admin/courses}">Manage Courses</a>
-                </div>
-                <div>
-                    <a th:href="@{/admin/reports}">Admin Report</a>
-                </div>
-                <div>
-                    <a th:href="@{/admin/profile}">View Profile</a>
+            <div class="admin-dashboard-container">
+                <h2>Admin Dashboard</h2>
+
+                <div class="dashboard-links">
+                    <a th:href="@{/admin/verify-payments}" class="dashboard-box">Verify Payments</a>
+                    <a th:href="@{/admin/appointments}" class="dashboard-box">Manage Appointments</a>
+                    <a th:href="@{/admin/users}" class="dashboard-box">Manage Users</a>
+                    <a th:href="@{/admin/courses}" class="dashboard-box">Manage Courses</a>
+                    <a th:href="@{/admin/reports}" class="dashboard-box">Admin Report</a>
+                    <a th:href="@{/admin/profile}" class="dashboard-box">View Profile</a>
                 </div>
             </div>
-        </div>
     </body>
 </html>

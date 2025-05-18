@@ -3,9 +3,57 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Register</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+  <title>About</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #b3d9f7, #e6f2ff);
+      color: #0a2a43;
+    }
+
+    .content-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 90vh;
+      padding: 20px;
+    }
+
+    .glass-box {
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 700px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .glass-box h1 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: #0a2a43;
+    }
+
+    .glass-box p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+   </style>
 </head>
 <body>
-<div th:replace="~{fragments/navbar :: navbar}"></div>
+  <div th:replace="~{fragments/navbar :: navbar}"></div>
+  <div class="content-container">
+    <div class="glass-box">
+      <h1>About Road Scholar</h1>
+      <p>
+      Road Scholar is a premier driving school designed to provide high-quality training for aspiring drivers.
+      Our goal is to empower students with the knowledge, confidence, and practical skills they need to drive safely and responsibly.
+      </p>
+    </div>
+  </div>
 </body>
 </html>

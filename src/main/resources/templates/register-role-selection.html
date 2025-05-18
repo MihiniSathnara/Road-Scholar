@@ -1,23 +1,28 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Register</title>
-    </head>
-    <body>
-        <div th:replace="~{fragments/navbar :: navbar}"></div>
-        <h2>Select Role</h2>
-        <div>
-            <form th:action="@{/register-role-selection}" method="post">
-                <select name="role" required>
-                    <option value="">--Select Role--</option>
-                    <option value="student">Student</option>
-                    <option value="instructor">Instructor</option>
-                    <option value="admin">Admin</option>
-                </select>
-                <button type="submit">Continue</button>
-            </form>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Register</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="form-container">
+    <h2>Select Role</h2>
+    <form th:action="@{/register-role-selection}" method="post" class="form">
+        <div class="form-group">
+            <select name="role" required class="form-select">
+                <option value="">--Select Role--</option>
+                <option value="student">Student</option>
+                <option value="instructor">Instructor</option>
+                <option value="admin">Admin</option>
+            </select>
         </div>
-    </body>
+
+        <button type="submit" class="btn">Continue</button>
+    </form>
+</div>
+</body>
 </html>

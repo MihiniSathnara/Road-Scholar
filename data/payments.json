@@ -1,19 +1,7 @@
 [ {
-  "paymentId" : "35d56836-5da5-43e0-a1c9-14c02d784dab",
+  "paymentId" : "56a09f58-6dc8-4bae-b1fb-7d703c6eba00",
   "studentId" : "S001",
-  "courseId" : "C01",
-  "amount" : 10000.0,
-  "paymentVerified" : true
-}, {
-  "paymentId" : "0241f0c4-74c5-485a-a765-5330a39257de",
-  "studentId" : "S001",
-  "courseId" : "C01",
-  "amount" : 10000.0,
-  "paymentVerified" : true
-}, {
-  "paymentId" : "1d6657bc-bced-453d-9bd9-5fbebe3590d6",
-  "studentId" : "S002",
-  "courseId" : "C02",
-  "amount" : 20000.0,
+  "courseId" : "C002",
+  "amount" : 22000.0,
   "paymentVerified" : true
 } ]

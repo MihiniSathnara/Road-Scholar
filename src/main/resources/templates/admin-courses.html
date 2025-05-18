@@ -1,32 +1,33 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Manage Courses</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
   </head>
   <body>
-  <div th:replace="~{fragments/navbar :: navbar}"></div>
-   <h2>Add New Course</h2>
-  <form th:action="@{/admin/courses/add}" th:object="${newCourse}" method="post">
-    <label>Name</label>
-    <input type="text" th:field="*{name}" required />
-    <br>
-    <label>Price</label>
-    <input type="number" step="0.01" th:field="*{price}" required />
-    <br>
-    <label>Description</label>
-    <input type="text" th:field="*{description}" required/>
-    <br>
-    <label>Total Appointments</label>
-    <input type="number" th:field="*{totalAppointments}" required/>
-    <br>
-    <button type="submit">Add Course</button>
-  </form>
+  <div class="manage-courses-container">
+    <h2>Add New Course</h2>
+    <form th:action="@{/admin/courses/add}" th:object="${newCourse}" method="post" class="course-form">
+      <label>Name</label>
+      <input type="text" th:field="*{name}" required />
 
-  <h2>Existing Courses</h2>
-  <table border="1">
-    <thead>
+      <label>Price</label>
+      <input type="number" step="0.01" th:field="*{price}" required />
+
+      <label>Description</label>
+      <input type="text" th:field="*{description}" required/>
+
+      <label>Total Appointments</label>
+      <input type="number" th:field="*{totalAppointments}" required/>
+
+      <button type="submit">Add Course</button>
+    </form>
+
+    <h2>Existing Courses</h2>
+    <table class="courses-table">
+      <thead>
       <tr>
         <th>Name</th>
         <th>Price</th>
@@ -34,25 +35,26 @@
         <th>Total Appointments</th>
         <th>Actions</th>
       </tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
       <tr th:each="course : ${courses}">
-        <form th:action="@{/admin/courses/update}" method="post">
+        <form th:action="@{/admin/courses/update}" method="post" class="update-form">
           <input type="hidden" th:name="courseId" th:value="${course.courseId}"/>
-          <td><input type="text" th:name="name" th:value="${course.name}"/></td>
-          <td><input type="number" step="0.01" th:name="price" th:value="${course.price}"/></td>
-          <td><input type="text" th:name="description" th:value="${course.description}"/></td>
-          <td><input type="number" th:name="totalAppointments" th:value="${course.totalAppointments}"/></td>
+          <td><input type="text" th:name="name" th:value="${course.name}" required/></td>
+          <td><input type="number" step="0.01" th:name="price" th:value="${course.price}" required/></td>
+          <td><input type="text" th:name="description" th:value="${course.description}" required/></td>
+          <td><input type="number" th:name="totalAppointments" th:value="${course.totalAppointments}" required/></td>
           <td>
             <button type="submit">Update</button>
         </form>
-        <form th:action="@{/admin/courses/delete}" method="post">
+        <form th:action="@{/admin/courses/delete}" method="post" class="delete-form">
           <input type="hidden" name="courseId" th:value="${course.courseId}"/>
-          <button type="submit">Delete</button>
+          <button type="submit" class="delete-btn">Delete</button>
         </form>
-          <td/>
+        </td>
       </tr>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
   </body>
 </html>

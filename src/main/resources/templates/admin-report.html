@@ -1,20 +1,23 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Report</title>
-  </head>
-  <body>
-    <div th:replace="~{fragments/navbar :: navbar}"></div>
-    <h2>Admin Report</h2>
-    <ul>
-      <li>Total Students: <span th:text="${totalStudents}"></span></li>
-      <li>Total Instructors: <span th:text="${totalInstructors}"></span></li>
-      <li>Total Courses: <span th:text="${totalCourses}"></span></li>
-      <li>Total Appointments: <span th:text="${totalAppointments}"></span></li>
-      <li>Total Payments Collected: Rs. <span th:text="${totalPayments}"></span></li>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Report</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body class="admin-report">
+<div th:replace="~{fragments/navbar :: navbar}"></div>
 
-    </ul>
-  </body>
+<div class="report-container">
+  <h2>Admin Report</h2>
+  <ul>
+    <li>Total Students: <span th:text="${totalStudents}"></span></li>
+    <li>Total Instructors: <span th:text="${totalInstructors}"></span></li>
+    <li>Total Courses: <span th:text="${totalCourses}"></span></li>
+    <li>Total Appointments: <span th:text="${totalAppointments}"></span></li>
+    <li>Total Payments Collected: Rs. <span th:text="${totalPayments}"></span></li>
+  </ul>
+</div>
+</body>
 </html>

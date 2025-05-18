@@ -1,21 +1,20 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Instructor Dashboard</title>
-  </head>
-  <body>
-    <div th:replace="~{fragments/navbar :: navbar}"></div>
-    <h2>Instructor Dashboard</h2>
-    <div>
-      <a th:href="@{/instructor/schedule}">View Schedule</a>
-    </div>
-    <div>
-      <a th:href="@{/instructor/students}">View My Students</a>
-    </div>
-    <div>
-      <a th:href="@{/instructor/profile}">View Profile</a>
-    </div>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Instructor Dashboard</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="dashboard-container">
+  <h2>Instructor Dashboard</h2>
+
+  <a th:href="@{/instructor/schedule}" class="btn-dashboard">View Schedule</a>
+  <a th:href="@{/instructor/students}" class="btn-dashboard">View My Students</a>
+  <a th:href="@{/instructor/profile}" class="btn-dashboard">View Profile</a>
+</div>
+</body>
 </html>

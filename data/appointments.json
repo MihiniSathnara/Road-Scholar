@@ -1,17 +1,9 @@
 [ {
-  "appointmentId" : "a3dd23c3-f0f6-4de0-8fb8-ecc4570df706",
+  "appointmentId" : "2246a2bf-c9bf-42ef-9253-aacac1285537",
   "studentId" : "S001",
   "instructorId" : "I002",
-  "courseId" : "C01",
+  "courseId" : "C002",
   "date" : "2025-05-17",
-  "timeSlot" : "14:00 - 16:00",
-  "completed" : true
-}, {
-  "appointmentId" : "de163ef5-535c-43d2-930e-2b6b06129f4a",
-  "studentId" : "S001",
-  "instructorId" : "I002",
-  "courseId" : "C01",
-  "date" : "2025-05-28",
-  "timeSlot" : "09:00 - 11:00",
+  "timeSlot" : "11:30 - 13:30",
   "completed" : true
 } ]

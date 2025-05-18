@@ -1,23 +1,25 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Payment</title>
-    </head>
-    <body>
-        <div th:replace="~{fragments/navbar :: navbar}"></div>
-        <h2>Pay to enroll</h2>
-        <div>
-            <p th:text="'Course: '+ ${course.name}"></p>
-            <p th:text="'Price: Rs.'+ ${course.price}"></p>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Payment</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
 
-            <div>
-                <form th:action="@{/student/enroll/payment}" method="post">
-                    <p>Payment will be verified by administration</p>
-                    <button type="submit">Confirm Payment</button>
-                </form>
-            </div>
-        </div>
-    </body>
+<div class="payment-container">
+    <h2>Pay to Enroll</h2>
+    <div class="payment-details">
+        <p><strong>Course:</strong> <span th:text="${course.name}"></span></p>
+        <p><strong>Price:</strong> Rs. <span th:text="${course.price}"></span></p>
+    </div>
+
+    <form th:action="@{/student/enroll/payment}" method="post" class="payment-form">
+        <p class="info-text">Payment will be verified by administration</p>
+        <button type="submit" class="btn-confirm">Confirm Payment</button>
+    </form>
+</div>
+</body>
 </html>

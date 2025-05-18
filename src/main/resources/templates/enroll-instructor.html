@@ -1,28 +1,26 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Select Instructor</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
 </head>
 <body>
-<div>
-    <div th:replace="~{fragments/navbar :: navbar}"></div>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="instructor-selection-container">
     <h2>Select an instructor</h2>
-    <div>
-        <th:block th:each="instructor: ${instructors}">
-            <div>
-                <div>
-                    <div>
-                        <h5 th:text="${instructor.firstName}"></h5>
-                        <h5 th:text="${instructor.lastName}"></h5>
-                        <p th:text="${instructor.experienceYears}"></p>
-                        <form th:action="@{/student/enroll/instructor}" method="post">
-                            <input type="hidden" name="instructorId" th:value="${instructor.instructorId}" />
-                            <button type="submit">Select</button>
-                        </form>
-                    </div>
-                </div>
+
+    <div class="instructor-list">
+        <th:block th:each="instructor : ${instructors}">
+            <div class="instructor-card">
+                <h5 th:text="${instructor.firstName + ' ' + instructor.lastName}"></h5>
+                <p><strong>Experience:</strong> <span th:text="${instructor.experienceYears}"></span> years</p>
+                <form th:action="@{/student/enroll/instructor}" method="post">
+                    <input type="hidden" name="instructorId" th:value="${instructor.instructorId}" />
+                    <button type="submit" class="btn-select">Select</button>
+                </form>
             </div>
         </th:block>
     </div>
